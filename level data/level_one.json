@@ -1,0 +1,40 @@
+{
+  "background":{
+    "base_level_location" : "stages",
+    "file_name": "stage_one.png",
+    "level_x_dim" : 1920,
+    "level_y_dim" : 1080
+  },
+  "main_character": {
+    "defultimage" : "",
+    "number of animation" : "1",
+    "starting_positionx" :  960,
+    "starting_positiony" : 540,
+    "rect_dim_x" : 10,
+    "rect_dim_y": 10,
+    "file_location" : "characters",
+    "file_name": "sprite_standing.png",
+    "image_scale_x": 192,
+    "image_scale_y": 108,
+    "image_rotation": 0,
+
+  "npc": {
+    "number_of_npcs" : 0,
+    "npc_info": {
+      "npc1": {
+        "npc_name": "",
+        "npc_dialog_file_location" : "",
+        "npc_movement_path": "",
+        "npc_trigger_event_index": ""
+      }
+    }
+
+    }
+  },
+  "triggers": {
+    "triggers_exist": true,
+    "number of triggers": 1,
+    "trigger_one_x": 123,
+    "trigger_one_y": 123
+  }
+}
