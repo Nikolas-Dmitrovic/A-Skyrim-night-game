@@ -9,6 +9,7 @@ import pygame
 from GLOBAL_VARIABLES import WIN, WHITE
 import os
 import json
+from text_engine import text_box
 
 # imports and sets variable for stage
 # TODO change this to take json variables based on level data
@@ -45,11 +46,14 @@ def draw_characters(characterimage):
     WIN.blit(MAIN_CHARACTER, (characterimage.x, characterimage.y))
 
 
+
+
 class stage_one:
     def __init__(self):
         self.state = 'stage'
         self.background = background
         self.character = character
+        textbox = text_box(self.background)
 
     def load_stage(self):
         self.quit_check()
