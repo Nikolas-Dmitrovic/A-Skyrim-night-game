@@ -46,14 +46,12 @@ def draw_characters(characterimage):
     WIN.blit(MAIN_CHARACTER, (characterimage.x, characterimage.y))
 
 
-
-
 class stage_one:
     def __init__(self):
         self.state = 'stage'
         self.background = background
         self.character = character
-        textbox = text_box(self.background)
+        self.textbox = text_box(STAGE, "pog")
 
     def load_stage(self):
         self.quit_check()
@@ -61,40 +59,42 @@ class stage_one:
         keys_pressed = pygame.key.get_pressed()
         self.background_handle_movement(keys_pressed, character, background)
         draw_window_stage1(background)
+        self.textbox.draw_textbox()
 
     def background_handle_movement(self, keys_pressed, yellow, background):
+        # TODO create limits to read from json file
+        # TODO rework limits
         if keys_pressed[pygame.K_a]:  # LEFT
-            yellow.x -= VEL
-            # temporary limits
-            # TODO create limits to read from json file
-            # set limits to be based off of the position of the background
-            if yellow.x <= background.x + 300:
+            if yellow.x <= 300:
                 background.x -= VEL / 2
-                yellow.x = background.x + 300
+                yellow.x = 300
+
+            if yellow.x > 300:
+                yellow.x -= VEL
 
         if keys_pressed[pygame.K_d]:  # Right
-            yellow.x += VEL
-            # temporary limits
-            # TODO create limits to read from json file
-            if yellow.x >= background.x + 1620:
+            if yellow.x >= 1620:
                 background.x += VEL / 2
-                # yellow.x = background.x + 1620
+                yellow.x = 1620
+
+            if yellow.x < 1620:
+                yellow.x += VEL
 
         if keys_pressed[pygame.K_w]:  # UP
-            yellow.y -= VEL
-            # temporary limits
-            # TODO create limits to read from json file
-            if yellow.y <= background.y + 300:
+            if yellow.y <= 300:
                 background.y -= VEL / 2
-                # yellow.y = background.y + 300
+                yellow.y = 300
 
-        if keys_pressed[pygame.K_s]:  # UP
-            yellow.y += VEL
-            # temporary limits
-            # TODO create limits to read from json file
-            if yellow.y >= background.y + 780:
+            if yellow.y > 300:
+                yellow.y -= VEL
+
+        if keys_pressed[pygame.K_s]:  # DOWN
+            if yellow.y >= 780:
                 background.y += VEL / 2
-                # yellow.y = background.y + 780
+                yellow.y = 780
+
+            if yellow.y < 780:
+                yellow.y += VEL
 
     def player_movement(self):
         # draw character and its rect

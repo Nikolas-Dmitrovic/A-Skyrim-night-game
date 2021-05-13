@@ -1,3 +1,4 @@
+import sys
 import pygame
 from GLOBAL_VARIABLES import WIN, WHITE
 
@@ -21,50 +22,58 @@ class menu_text:
 
 
 class text_box:
-    class decorators:
+    text_box_rect = pygame.Rect(0, 0, 1000, 100)
 
-        # tract current text index to be able to pick next text file
-        @classmethod
-        def tract_index(cls, func):
-            def wrapper():
-                func()
-
-            return wrapper
-
-    text_box_rect = pygame.Rect(0, 0, 100, 100)
-
-    def __init__(self, surface):
+    def __init__(self, surface, text_file):
         self.surface = surface
-        print(text_box.text_box_rect)
+        self.text = text_file
 
     def draw_textbox(self):
         pygame.draw.rect(self.surface, WHITE, text_box.text_box_rect)
 
-    @decorators.tract_index
-    def open_text(self):
-        pass
-        # open json index file
-
-        # create function to track current index in index file
-
-        # set variable to text file
-
-        # text = open("filename","r")
-
-        # return textvariable
-
+    # add async timings and skip function for this lol
     def text_display(self):
+
         font = pygame.font.Font('DarkXShadowSkyrim.ttf', 16)
+        textvar = open(self.text, "r")
+        x = 0
 
-        # place this in for loop and change y positon after every line
-        # clear text area to black after it is filled with text
-        '''text = font.render(self.text, True, WHITE)
-        textRect = text.get_rect()
-        textRect.center = (self.x, self.y)
-        WIN.blit(text, textRect)'''
+        for i in textvar:
+            text = font.render(i, True, WHITE)
+            textRect = text.get_rect()
 
-# print text to screen
+            time_delay = 500  # 0.5 seconds
+            timer_event = pygame.USEREVENT + 1
+            pygame.time.set_timer(timer_event, time_delay)
 
-# control text speed
+            for event in pygame.event.get():
+                if event == timer_event:
 
-# add skip forward stuff
+
+
+                    # optimise if statements and create recursive function for it
+                    if x == 0:
+                        textRect.center = (800, 900)
+                        WIN.blit(text, textRect)
+                        x += 1
+
+                    if x == 1:
+                        textRect.center = (800, 1000)
+                        WIN.blit(text, textRect)
+                        x += 1
+
+                    if x == 2:
+                        x = 0
+                        self.draw_textbox()
+                        textRect.center = (800, 1000)
+                        WIN.blit(text, textRect)
+                if event.type == pygame.QUIT:
+                    run = False
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        run = False
+                        pygame.quit()
+                        sys.exit()
