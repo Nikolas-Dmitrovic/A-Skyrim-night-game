@@ -1,4 +1,4 @@
-
+# TODO create
 # TODO create stage class takes the stage, and triggering points as input
 # TODO create animatic modal and implement into stage modal
 # TODO create level loader modal
@@ -13,12 +13,27 @@ import pygame
 from main_menu import Gamestate_main_menu
 from stageOne import stage_one
 
-pygame.init()
+# pygame.init()
 
 # TODO screen constants and initialise screen
 # TODO make changes to change scream size and resolution
+from timeings_classes import timing
 
 
+@timing(60)
+def prints():
+    print("hello")
+
+
+'''run = True
+clock = pygame.time.Clock()
+while run:
+    clock.tick(60)
+    prints()'''
+
+path = ((1, 2), (3, 4))
+
+print(path[0][1])
 game_state = Gamestate_main_menu()
 mainMenu = True
 stage = stage_one()

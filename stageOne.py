@@ -31,19 +31,16 @@ MAIN_CHARACTER = pygame.transform.rotate(
 STAGE = pygame.transform.rotate(
     pygame.transform.scale(
         pygame.image.load(os.path.join(data["background"]["base_level_location"], data["background"]["file_name"])),
-        (2920, 2080)), 0)
+        (1920, 1080)), 0)
 
 
 # draws screen
-def draw_window_stage1(backgroundimage):
+def draw_window_stage1(backgroundimage,characterimage):
     WIN.fill(WHITE)
     WIN.blit(STAGE, (backgroundimage.x, backgroundimage.y))
-    draw_characters(character)
-    pygame.display.update()
-
-
-def draw_characters(characterimage):
     WIN.blit(MAIN_CHARACTER, (characterimage.x, characterimage.y))
+
+
 
 
 class stage_one:
@@ -57,48 +54,73 @@ class stage_one:
         self.quit_check()
 
         keys_pressed = pygame.key.get_pressed()
-        self.background_handle_movement(keys_pressed, character, background)
-        draw_window_stage1(background)
+        self.handle_movment(keys_pressed)
+        draw_window_stage1(background,character)
         self.textbox.draw_textbox()
+        pygame.display.update()
 
-    def background_handle_movement(self, keys_pressed, yellow, background):
+    def handle_movment(self,keys_pressed):
+        if not data["background"]["movable"]:
+            self.handle_movment_background_static(keys_pressed)
+
+        if data["background"]["movable"]:
+            self.background_handle_movement(keys_pressed)
+
+    def handle_movment_background_static(self,keys_pressed):
+        if keys_pressed[pygame.K_a]:  # LEFT
+            self.character.x -= VEL
+            if self.character.x <= 300:
+                self.character.x += VEL
+
+        if keys_pressed[pygame.K_d]:  # Right
+            self.character.x += VEL
+            if self.character.x >= 1620:
+                self.character.x -= VEL
+
+        if keys_pressed[pygame.K_w]:  # UP
+            self.character -= VEL
+            if self.character.y <= 300:
+                self.character.y += VEL
+
+        if keys_pressed[pygame.K_s]:  # DOWN
+            self.character.y += VEL
+            if self.character.y >= 780:
+                self.character.y -= VEL
+
+    def background_handle_movement(self,keys_pressed):
         # TODO create limits to read from json file
         # TODO rework limits
         if keys_pressed[pygame.K_a]:  # LEFT
-            if yellow.x <= 300:
-                background.x -= VEL / 2
-                yellow.x = 300
+            if self.character.x <= 300:
+                self.character.x -= VEL / 2
+                self.character.x = 300
 
-            if yellow.x > 300:
-                yellow.x -= VEL
+            if self.character.x > 300:
+                self.character.x -= VEL
 
         if keys_pressed[pygame.K_d]:  # Right
-            if yellow.x >= 1620:
-                background.x += VEL / 2
-                yellow.x = 1620
+            if self.character.x >= 1620:
+                self.character.x += VEL / 2
+                self.character.x = 1620
 
-            if yellow.x < 1620:
-                yellow.x += VEL
+            if self.character.x < 1620:
+                self.character.x += VEL
 
         if keys_pressed[pygame.K_w]:  # UP
-            if yellow.y <= 300:
-                background.y -= VEL / 2
-                yellow.y = 300
+            if self.character.y <= 300:
+                self.background.y -= VEL / 2
+                self.character.y = 300
 
-            if yellow.y > 300:
-                yellow.y -= VEL
+            if self.character.y > 300:
+                self.character.y -= VEL
 
         if keys_pressed[pygame.K_s]:  # DOWN
-            if yellow.y >= 780:
-                background.y += VEL / 2
-                yellow.y = 780
+            if self.character.y >= 780:
+                self.background.y += VEL / 2
+                self.character.y = 780
 
-            if yellow.y < 780:
-                yellow.y += VEL
-
-    def player_movement(self):
-        # draw character and its rect
-        pass
+            if self.character.y < 780:
+                self.character.y += VEL
 
     @staticmethod
     def quit_check():

@@ -1,9 +1,10 @@
 {
   "background":{
     "base_level_location" : "stages",
-    "file_name": "stage_one.png",
+    "file_name": "pixil-frame-0.png",
     "level_x_dim" : 1920,
-    "level_y_dim" : 1080
+    "level_y_dim" : 1080,
+    "movable": true
   },
   "main_character": {
     "defultimage" : "",
