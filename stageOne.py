@@ -10,6 +10,7 @@ from GLOBAL_VARIABLES import WIN, WHITE
 import os
 import json
 from text_engine import text_box
+from NPC_handler import NPC
 
 # imports and sets variable for stage
 # TODO change this to take json variables based on level data
@@ -49,6 +50,7 @@ class stage_one:
         self.background = background
         self.character = character
         self.textbox = text_box(STAGE, "pog")
+        self.npcone = NPC(data)
 
     def load_stage(self):
         self.quit_check()
@@ -57,6 +59,8 @@ class stage_one:
         self.handle_movment(keys_pressed)
         draw_window_stage1(background,character)
         self.textbox.draw_textbox()
+        self.npcone.draw_npc()
+        self.npcone.npc_handel_movements(((1, 2), (3, 4)))
         pygame.display.update()
 
     def handle_movment(self,keys_pressed):

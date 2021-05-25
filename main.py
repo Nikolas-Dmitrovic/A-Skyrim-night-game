@@ -33,7 +33,7 @@ while run:
 
 path = ((1, 2), (3, 4))
 
-print(path[0][1])
+print(len(path))
 game_state = Gamestate_main_menu()
 mainMenu = True
 stage = stage_one()

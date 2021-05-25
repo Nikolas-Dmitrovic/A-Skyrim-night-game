@@ -6,10 +6,8 @@ import os
 from GLOBAL_VARIABLES import WIN, WHITE
 
 
-
-
 # temp test path add this to json file afterwords
-path = ((1,1),(2,2))
+# path = ((1,1),(2,2))6
 
 class NPC:
     def __init__(self, data):
@@ -25,11 +23,56 @@ class NPC:
                 (192, 108)), 0)
 
     def draw_npc(self):
-        WIN.fill(WHITE)
         WIN.blit(self.npc, (self.character.x, self.character.y))
 
     def npc_handel_movements(self, path):
         # create path list where each index is two cords(pos 1 and pos 2) where path is from pos 1 to pos 2
-        for i in path:
+        z = 0
+        q = z + 1
+        moving_x = True
 
-        pass
+        pos1_x = path[z][0]
+        pos1_y = path[z][1]
+        pos2_x = path[q][0]
+        pos2_y = path[q][1]
+
+        #  - done - find distance from point a to b for each x and y
+        # - done - idenitfy if the change is for x or y
+        # - done - calculate how many frames it will take to get to second point
+        # use counter to run segment of code for that period of time
+        # create switcher function to switch to new path ...
+        # add movement stuff
+
+        difx = pos2_x - pos1_x
+        dify = pos2_y - pos1_y
+
+        if difx != 0 and dify != 0:
+            frames = difx / 60
+            if difx > 0:
+                self.character.x += 5
+                return
+            if difx < 0:
+                self.character.x -= 5
+                return
+
+        if dify != 0 and difx != 0:
+            frames = dify / 60
+            if dify > 0:
+                self.character.y += 5
+                return
+            if dify < 0:
+                self.character.y -= 5
+                return
+
+        # diagonal movemnet handler
+        if difx != 0 and dify != 0:
+            pass
+
+        '''if self.character.x <= 1900-192:
+
+            if moving_x:
+                self.character.x += 5
+
+        # z = z + 1
+
+        pass'''
