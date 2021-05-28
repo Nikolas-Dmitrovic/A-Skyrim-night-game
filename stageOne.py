@@ -6,7 +6,7 @@
 
 import sys
 import pygame
-from GLOBAL_VARIABLES import WIN, WHITE
+from GLOBAL_VARIABLES import WIN, WHITE, VEL
 import os
 import json
 from text_engine import text_box
@@ -19,7 +19,6 @@ from NPC_handler import NPC
 # opens json file
 f = open(os.path.join('level data', 'level_one.json'))
 data = json.load(f)
-VEL = 5
 
 character = pygame.Rect(data["main_character"]["starting_positionx"], data["main_character"]["starting_positiony"],
                         data["main_character"]["rect_dim_x"], data["main_character"]["rect_dim_y"])
@@ -50,7 +49,7 @@ class stage_one:
         self.background = background
         self.character = character
         self.textbox = text_box(STAGE, "pog")
-        self.npcone = NPC(data)
+        self.npcOne = NPC(data,False)
 
     def load_stage(self):
         self.quit_check()
@@ -59,8 +58,8 @@ class stage_one:
         self.handle_movment(keys_pressed)
         draw_window_stage1(background,character)
         self.textbox.draw_textbox()
-        self.npcone.draw_npc()
-        self.npcone.npc_handel_movements(((1, 2), (3, 4)))
+        self.npcOne.draw_npc()
+        # self.npcone.npc_handel_movements(((1, 2), (3, 4)))
         pygame.display.update()
 
     def handle_movment(self,keys_pressed):

@@ -10,26 +10,45 @@
 
 # TODO imports all the scripts and code library's
 import pygame
-from main_menu import Gamestate_main_menu
-from stageOne import stage_one
+'''from main_menu import Gamestate_main_menu
+from stageOne import stage_one'''
 
 # pygame.init()
 
 # TODO screen constants and initialise screen
 # TODO make changes to change scream size and resolution
-from timeings_classes import timing
+# from timeings_classes import timing
 
 
-@timing(60)
+# @timing(60)
 def prints():
     print("hello")
+
+
+class hi():
+    def __init__(self,hello):
+        self.hi = hello
+
+    def swag(self):
+        return self.hi
+
+hello = ("hi","fuck","off","dude","i","sweare","t0","god","9","10","11","12")
+objs = list()
+for i in range(10):
+    objs.append(hi(hello[i]))
+
+
+
+
+
+
 
 
 '''run = True
 clock = pygame.time.Clock()
 while run:
     clock.tick(60)
-    prints()'''
+    prints()
 
 path = ((1, 2), (3, 4))
 
@@ -52,6 +71,6 @@ def main():
 
     pygame.quit()
 
-
-if __name__ == "__main__":
-    main()
+'''
+'''if __name__ == "__main__":
+    main()'''

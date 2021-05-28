@@ -20,7 +20,7 @@ select_image = pygame.transform.rotate(pygame.transform.scale(select_image_raw, 
 
 
 
-# currson rectangle
+# cursor rectangle
 select = pygame.Rect(1000, 250, 10, 10)
 
 t1 = menu_text('New Game', 900, 250, 72)
