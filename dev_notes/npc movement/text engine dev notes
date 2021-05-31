@@ -1,0 +1,6 @@
+draw text box at the bottom of the screen
+create a custom image for the text box
+take text file or text and put it into a string
+split string by each line and put them into a list
+print text to screen
+create solid block/square to cover text

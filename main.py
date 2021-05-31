@@ -9,8 +9,8 @@
 # TODO add basic config json file to change stuff like movement speed
 
 # TODO imports all the scripts and code library's
-import pygame
-'''from main_menu import Gamestate_main_menu
+'''import pygame
+from main_menu import Gamestate_main_menu
 from stageOne import stage_one'''
 
 # pygame.init()
@@ -20,6 +20,28 @@ from stageOne import stage_one'''
 # from timeings_classes import timing
 
 
+
+def switch_demo(argument):
+    switcher = {
+        "a": "January",
+        "b": "February",
+        "c": "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+    print(switcher.get(argument, "Invalid month"))
+
+switch_demo("f")
+
+
+'''
 # @timing(60)
 def prints():
     print("hello")
@@ -44,7 +66,7 @@ for i in range(10):
 
 
 
-'''run = True
+run = True
 clock = pygame.time.Clock()
 while run:
     clock.tick(60)
@@ -52,8 +74,8 @@ while run:
 
 path = ((1, 2), (3, 4))
 
-print(len(path))
-game_state = Gamestate_main_menu()
+print(len(path))'''
+'''game_state = Gamestate_main_menu()
 mainMenu = True
 stage = stage_one()
 
@@ -71,6 +93,6 @@ def main():
 
     pygame.quit()
 
-'''
-'''if __name__ == "__main__":
+
+if __name__ == "__main__":
     main()'''

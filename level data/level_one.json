@@ -4,7 +4,7 @@
     "file_name": "pixil-frame-0.png",
     "level_x_dim" : 1920,
     "level_y_dim" : 1080,
-    "movable": true
+    "movable": false
   },
   "main_character": {
     "defultimage" : "",

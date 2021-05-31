@@ -81,7 +81,7 @@ class stage_one:
                 self.character.x -= VEL
 
         if keys_pressed[pygame.K_w]:  # UP
-            self.character -= VEL
+            self.character.y -= VEL
             if self.character.y <= 300:
                 self.character.y += VEL
 

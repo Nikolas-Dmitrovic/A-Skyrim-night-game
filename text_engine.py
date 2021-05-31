@@ -4,6 +4,7 @@ from GLOBAL_VARIABLES import WIN, WHITE
 
 
 class menu_text:
+
     def __init__(self, text, x, y, size):
         self.text = text
         self.x = x
@@ -21,59 +22,85 @@ class menu_text:
         self.size = size
 
 
+# draw text box
+# take text file and split into lines
+# print text per screen and print a large black block over text
+# move block to expose text one letter at a time
+
+
 class text_box:
     text_box_rect = pygame.Rect(0, 0, 1000, 100)
 
     def __init__(self, surface, text_file):
         self.surface = surface
         self.text = text_file
+        self.text.lines = list()
+        self.textSize = 24
+        self.font = pygame.font.Font('DarkXShadowSkyrim.ttf', self.textSize)
+
+        # text lines rect peramiters
+        self.lineOneX = None  # all x and y cords for top left corner of box
+        self.lineOney = None
+        self.lineTwoX = None
+        self.lineTWOY = None
+        self.indexLineOne = 0
+        self.indexLineTwo = 1
+
+        # text hiding block
+        # TODO change dims to make then all fit and work nicely
+        self.block = pygame.Rect(0, 0, 1000, 100)
+        self.moveDownAmount = 120  # number in pixels
+        self.moveCounter = 0
 
     def draw_textbox(self):
         pygame.draw.rect(self.surface, WHITE, text_box.text_box_rect)
 
-    # add async timings and skip function for this lol
-    def text_display(self):
+    def text_unpacker(self):
+        for lines in self.text:
+            self.text.lines.append(lines)
 
-        font = pygame.font.Font('DarkXShadowSkyrim.ttf', 16)
-        textvar = open(self.text, "r")
-        x = 0
+    def text_writer(self):
+        text1 = self.font.render(self.text.lines[0], True, WHITE)
+        textRect1 = text1.get_rect()
+        textRect1.topleft = (self.lineOneX, self.lineOney)
 
-        for i in textvar:
-            text = font.render(i, True, WHITE)
-            textRect = text.get_rect()
+        text2 = self.font.render(self.text.lines[1], True, WHITE)
+        textRect2 = text2.get_rect()
+        textRect2.topleft = (self.lineTwoX, self.lineTWOY)
 
-            time_delay = 500  # 0.5 seconds
-            timer_event = pygame.USEREVENT + 1
-            pygame.time.set_timer(timer_event, time_delay)
+        WIN.blit(text1, textRect1)
+        WIN.blit(text2, textRect2)
 
-            for event in pygame.event.get():
-                if event == timer_event:
+    def text_cover(self):
+        pygame.draw.rect(self.surface, WHITE, self.block)
+        pass
 
+    def text_animation(self):
 
+        self.text_writer()
 
-                    # optimise if statements and create recursive function for it
-                    if x == 0:
-                        textRect.center = (800, 900)
-                        WIN.blit(text, textRect)
-                        x += 1
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                pygame.quit()
+                sys.exit()
 
-                    if x == 1:
-                        textRect.center = (800, 1000)
-                        WIN.blit(text, textRect)
-                        x += 1
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    if self.moveCounter > 2:
+                        self.block.x -= self.moveDownAmount
+                        self.moveCounter += 1
+                    if self.moveCounter == 2:
+                        self.block.x += 2 * self.moveDownAmount
+                        self.moveCounter = 0
+                        self.indexLineTwo += 2
+                        self.indexLineTwo += 2
 
-                    if x == 2:
-                        x = 0
-                        self.draw_textbox()
-                        textRect.center = (800, 1000)
-                        WIN.blit(text, textRect)
-                if event.type == pygame.QUIT:
+                if event.key == pygame.K_ESCAPE:
                     run = False
                     pygame.quit()
                     sys.exit()
 
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        run = False
-                        pygame.quit()
-                        sys.exit()
+        pass
+
+    # def text_display(self):
