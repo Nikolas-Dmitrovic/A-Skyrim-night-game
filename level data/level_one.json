@@ -35,7 +35,19 @@
   "triggers": {
     "triggers_exist": true,
     "number of triggers": 1,
-    "trigger_one_x": 123,
-    "trigger_one_y": 123
+    "triggers_info" : {
+      "trig one": {
+        "type" : "collison",
+        "cords": [[123,345],[123,435]],
+        "trigger_event" : null
+      },
+      "trig two": {
+        "type" : "collison"
+
+      }
+    }
+  },
+  "events": {
+
   }
 }

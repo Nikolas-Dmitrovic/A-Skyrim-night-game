@@ -11,6 +11,7 @@ import os
 import json
 from text_engine import text_box
 from NPC_handler import NPC
+from movement import movement
 
 # imports and sets variable for stage
 # TODO change this to take json variables based on level data
@@ -35,12 +36,10 @@ STAGE = pygame.transform.rotate(
 
 
 # draws screen
-def draw_window_stage1(backgroundimage,characterimage):
+def draw_window_stage1(backgroundimage, characterimage):
     WIN.fill(WHITE)
     WIN.blit(STAGE, (backgroundimage.x, backgroundimage.y))
     WIN.blit(MAIN_CHARACTER, (characterimage.x, characterimage.y))
-
-
 
 
 class stage_one:
@@ -49,81 +48,19 @@ class stage_one:
         self.background = background
         self.character = character
         self.textbox = text_box(STAGE, "pog")
-        self.npcOne = NPC(data,False)
+        self.npcOne = NPC(data, False)
+        self.play_movement = movement(data, self.character, self.background, ((self.character.x <= 300), (self.character.x >= 1620), (self.character.y <= 300), (self.character.y >= 780)))
 
     def load_stage(self):
         self.quit_check()
 
         keys_pressed = pygame.key.get_pressed()
-        self.handle_movment(keys_pressed)
-        draw_window_stage1(background,character)
+        self.play_movement.handle_movment(keys_pressed)
+        draw_window_stage1(background, character)
         self.textbox.draw_textbox()
         self.npcOne.draw_npc()
         # self.npcone.npc_handel_movements(((1, 2), (3, 4)))
         pygame.display.update()
-
-    def handle_movment(self,keys_pressed):
-        if not data["background"]["movable"]:
-            self.handle_movment_background_static(keys_pressed)
-
-        if data["background"]["movable"]:
-            self.background_handle_movement(keys_pressed)
-
-    def handle_movment_background_static(self,keys_pressed):
-        if keys_pressed[pygame.K_a]:  # LEFT
-            self.character.x -= VEL
-            if self.character.x <= 300:
-                self.character.x += VEL
-
-        if keys_pressed[pygame.K_d]:  # Right
-            self.character.x += VEL
-            if self.character.x >= 1620:
-                self.character.x -= VEL
-
-        if keys_pressed[pygame.K_w]:  # UP
-            self.character.y -= VEL
-            if self.character.y <= 300:
-                self.character.y += VEL
-
-        if keys_pressed[pygame.K_s]:  # DOWN
-            self.character.y += VEL
-            if self.character.y >= 780:
-                self.character.y -= VEL
-
-    def background_handle_movement(self,keys_pressed):
-        # TODO create limits to read from json file
-        # TODO rework limits
-        if keys_pressed[pygame.K_a]:  # LEFT
-            if self.character.x <= 300:
-                self.character.x -= VEL / 2
-                self.character.x = 300
-
-            if self.character.x > 300:
-                self.character.x -= VEL
-
-        if keys_pressed[pygame.K_d]:  # Right
-            if self.character.x >= 1620:
-                self.character.x += VEL / 2
-                self.character.x = 1620
-
-            if self.character.x < 1620:
-                self.character.x += VEL
-
-        if keys_pressed[pygame.K_w]:  # UP
-            if self.character.y <= 300:
-                self.background.y -= VEL / 2
-                self.character.y = 300
-
-            if self.character.y > 300:
-                self.character.y -= VEL
-
-        if keys_pressed[pygame.K_s]:  # DOWN
-            if self.character.y >= 780:
-                self.background.y += VEL / 2
-                self.character.y = 780
-
-            if self.character.y < 780:
-                self.character.y += VEL
 
     @staticmethod
     def quit_check():

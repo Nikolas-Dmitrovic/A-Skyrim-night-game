@@ -12,6 +12,8 @@
 '''import pygame
 from main_menu import Gamestate_main_menu
 from stageOne import stage_one'''
+import json
+import os
 
 # pygame.init()
 
@@ -19,8 +21,25 @@ from stageOne import stage_one'''
 # TODO make changes to change scream size and resolution
 # from timeings_classes import timing
 
+x = 1
+z = 2
+
+y = x and z
+
+if 12 > y:
+    print("hello")
 
 
+
+
+
+'''f = open(os.path.join('level data', 'level_one.json'))
+data = json.load(f)
+for i in data["triggers"]["triggers_info"]:
+    print(data["triggers"]["triggers_info"][i]["type"])
+# print(data["triggers"]["triggers_cords"][1][1])'''
+
+'''
 def switch_demo(argument):
     switcher = {
         "a": "January",
@@ -39,7 +58,7 @@ def switch_demo(argument):
     print(switcher.get(argument, "Invalid month"))
 
 switch_demo("f")
-
+'''
 
 '''
 # @timing(60)
