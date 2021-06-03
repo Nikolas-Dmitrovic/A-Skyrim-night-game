@@ -49,7 +49,9 @@ class stage_one:
         self.character = character
         self.textbox = text_box(STAGE, "pog")
         self.npcOne = NPC(data, False)
-        self.play_movement = movement(data, self.character, self.background, ((self.character.x <= 300), (self.character.x >= 1620), (self.character.y <= 300), (self.character.y >= 780)))
+        self.play_movement = movement(data, self.character, self.background, (
+            (self.character.x <= 300), (self.character.x >= 1620), (self.character.y <= 300),
+            (self.character.y >= 780)))
 
     def load_stage(self):
         self.quit_check()

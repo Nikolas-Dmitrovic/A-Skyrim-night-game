@@ -1,0 +1,26 @@
+create trigger class
+inputs(data json file, movement object):
+
+class variables:
+    self.list = list()
+    self.data = data
+    self.movement_object = movement object
+
+
+create function to unpack data and set a pygame square using this information
+append each square to self.list
+
+
+create detection function
+loop each square in self.list
+figure out how to use pygame collision detection
+
+if collision occurs
+set speed of character to 0/ stop character
+add functions to movement class to stop characters movement
+
+
+
+--- movement class additions ---
+create a
+

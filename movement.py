@@ -2,7 +2,7 @@ import pygame
 from GLOBAL_VARIABLES import VEL
 
 
-class movement():
+class movement:
 
     def __init__(self, data, character, background, limits):
         self.data = data
@@ -13,6 +13,7 @@ class movement():
         self.x_right = self.limits[1]
         self.y_up = self.limits[2]
         self.y_down = self.limits[3]
+        self.VEL = 5
 
     def handle_movment(self, keys_pressed):
         if not self.data["background"]["movable"]:
@@ -73,3 +74,13 @@ class movement():
                 self.character.y = 780
 
             self.character.y += VEL
+
+    def stop_character(self, key_pressed):
+        if key_pressed[pygame.K_a]:  # left
+            self.character.x += VEL
+        if key_pressed[pygame.K_d]:  # left
+            self.character.x -= VEL
+        if key_pressed[pygame.K_w]:  # left
+            self.character.y += VEL
+        if key_pressed[pygame.K_s]:  # left
+            self.character.y -= VEL
