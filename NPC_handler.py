@@ -12,7 +12,7 @@ import timeings_classes as time
 
 
 class NPC:
-    def __init__(self, data, movement, path=((0, 0), (0, 0))):
+    def __init__(self, data, npcDataIndex, movement, ):
         self.data = data
         # TODO add these fields to level one json and modify indexes here
         self.character = pygame.Rect(data["main_character"]["starting_positionx"],
@@ -24,12 +24,14 @@ class NPC:
                     os.path.join(data["main_character"]["file_location"], data["main_character"]["file_name"])),
                 (192, 108)), 0)
         if movement:
-            self.path = path
+            self.path = data["npc"]["npc_info"][npcDataIndex]["npc_movement_path"]
             self.movement_setup_token = 0
             self.movementObjs = list()
             self.currentMoveObjectIndex = 0
             self.currentMoveObjectTick = 1
             self.path_unpacker()
+
+        self.npc_text = data["npc"]["npc_info"][npcDataIndex]["npc_dialog_file_location"]
 
     def draw_npc(self):
         WIN.blit(self.npc, (self.character.x, self.character.y))
@@ -120,86 +122,3 @@ class paths:
     def getTicks(self):
         ticks = self.effectic_distance / VEL
         return int(ticks)
-
-    '''def npc_handel_movements(self, path):
-        # create path list where each index is two cords(pos 1 and pos 2) where path is from pos 1 to pos 2
-        z = 0
-        q = z + 1
-        moving_x = True
-
-        pos1_x = path[z][0]
-        pos1_y = path[z][1]
-        pos2_x = path[q][0]
-        pos2_y = path[q][1]
-
-        #  - done - find distance from point a to b for each x and y
-        # - done - idenitfy if the change is for x or y
-        # - done - calculate how many frames it will take to get to second point
-        # use counter to run segment of code for that period of time
-        # create switcher function to switch to new path ...
-        # add movement stuff
-
-        difx = pos2_x - pos1_x
-        dify = pos2_y - pos1_y
-
-        count =
-
-        if difx != 0 and dify != 0:
-            frames = difx / 60
-            if difx > 0:
-                self.character.x += 5
-
-            if difx < 0:
-                self.character.x -= 5
-
-        if dify != 0 and difx != 0:
-            frames = dify / 60
-            if dify > 0:
-                self.character.y += 5
-
-            if dify < 0:
-                self.character.y -= 5
-
-        # diagonal movemnet handler
-        if difx != 0 and dify != 0:
-            pass
-
-        if self.character.x <= 1900-192:
-
-            if moving_x:
-                self.character.x += 5
-
-        # z = z + 1
-
-        pass
-
-    # figure out movement count variables
-    @time.do_for(5)
-    def movement_statments(self):
-        if difx != 0 and dify != 0:
-            frames = difx / 60
-            if difx > 0:
-                self.character.x += 5
-
-            if difx < 0:
-                self.character.x -= 5
-
-        if dify != 0 and difx != 0:
-            frames = dify / 60
-            if dify > 0:
-                self.character.y += 5
-
-            if dify < 0:
-                self.character.y -= 5
-
-        # diagonal movemnet handler
-        if difx != 0 and dify != 0:
-            pass
-
-        if self.character.x <= 1900-192:
-
-            if moving_x:
-                self.character.x += 5
-
-        # z = z + 1
-'''

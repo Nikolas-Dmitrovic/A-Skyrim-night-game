@@ -1,0 +1,29 @@
+for now make basic single events and single npc
+create capability for chained events or conditional events later
+
+
+events class
+
+inputs:
+character
+data json file
+npc object
+
+make list of basic triggers
+
+-- functions --
+
+stage events unpacker:
+cycle trough all events and make a list of pygame rects for all triggers
+
+event_types:
+create a switch function that handles event execution
+    trigger events:
+        cycle
+        use pygame colsion and on key press
+        exicute npc text command and stuff
+    on level start:
+    wait for x number of seconds
+    use npc.move to move the npc
+
+

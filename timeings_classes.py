@@ -16,6 +16,19 @@ class wait:
         return innerfunc
 
 
+class waitFor:
+
+    def __init__(self, time):
+        self.timings = time * 60
+        self.count = 0
+
+    def __call__(self):
+        if self.count == self.timings:
+            return True
+        else:
+            return False
+
+
 class do_for:
 
     def __init__(self, target_count):

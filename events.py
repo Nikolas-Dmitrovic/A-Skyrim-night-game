@@ -1,14 +1,35 @@
 '''
-creates a event object for coustom level scrips and npc moves or something lmao
+creates a event object for custom level scrips and npc moves or something lmao
 create triggers first to see if this is needed
 
 '''
+# TODO create events format in json file
+import pygame
+import timeings_classes as time
 
 
+class events:
+    def __init__(self, character, data, npcObject):
+        self.character = character
+        self.data = data
+        self.npcObject = npcObject
+        self.triggersList = list()
+        self.onStartMovement = list()
 
-class events(object):
-    def __init__(self):
-        pass
+    def stage_events_unpacker(self):
+        for i in self.data["events"]:
+            if self.data["events"][i]["type"] == "trigger":
+                event = self.data["events"][i]["reckt"]
+                self.triggersList.append(pygame.Rect(event[0], event[1], event[2], event[3]))
 
-    def get_events(self):
+            if self.data["events"][i]["type"] == "onLevelStart":
+                self.onStartMovement.append(self.data["events"[i]["path"]])
 
+    def event_trigger_check(self, func):
+        for i in self.triggersList:
+            if self.character.colliderect(i):
+                func()
+
+    def event_onStart_check(self, wait, func):
+        if time.waitFor(wait):
+            func(self.onStartMovement)

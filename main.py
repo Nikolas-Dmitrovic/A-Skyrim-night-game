@@ -9,92 +9,17 @@
 # TODO add basic config json file to change stuff like movement speed
 
 # TODO imports all the scripts and code library's
-'''import pygame
+import pygame
 from main_menu import Gamestate_main_menu
-from stageOne import stage_one'''
-import json
-import os
+from stageOne import stage_one
 
-# pygame.init()
+pygame.init()
 
 # TODO screen constants and initialise screen
 # TODO make changes to change scream size and resolution
 # from timeings_classes import timing
 
-x = 1
-z = 2
-
-y = x and z
-
-if 12 > y:
-    print("hello")
-
-
-
-
-
-'''f = open(os.path.join('level data', 'level_one.json'))
-data = json.load(f)
-for i in data["triggers"]["triggers_info"]:
-    print(data["triggers"]["triggers_info"][i]["type"])
-# print(data["triggers"]["triggers_cords"][1][1])'''
-
-'''
-def switch_demo(argument):
-    switcher = {
-        "a": "January",
-        "b": "February",
-        "c": "March",
-        4: "April",
-        5: "May",
-        6: "June",
-        7: "July",
-        8: "August",
-        9: "September",
-        10: "October",
-        11: "November",
-        12: "December"
-    }
-    print(switcher.get(argument, "Invalid month"))
-
-switch_demo("f")
-'''
-
-'''
-# @timing(60)
-def prints():
-    print("hello")
-
-
-class hi():
-    def __init__(self,hello):
-        self.hi = hello
-
-    def swag(self):
-        return self.hi
-
-hello = ("hi","fuck","off","dude","i","sweare","t0","god","9","10","11","12")
-objs = list()
-for i in range(10):
-    objs.append(hi(hello[i]))
-
-
-
-
-
-
-
-
-run = True
-clock = pygame.time.Clock()
-while run:
-    clock.tick(60)
-    prints()
-
-path = ((1, 2), (3, 4))
-
-print(len(path))'''
-'''game_state = Gamestate_main_menu()
+game_state = Gamestate_main_menu()
 mainMenu = True
 stage = stage_one()
 
@@ -114,4 +39,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()'''
+    main()6

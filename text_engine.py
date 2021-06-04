@@ -38,7 +38,7 @@ class text_box:
         self.textSize = 24
         self.font = pygame.font.Font('DarkXShadowSkyrim.ttf', self.textSize)
 
-        # text lines rect peramiters
+        # text lines rect parameters
         self.lineOneX = None  # all x and y cords for top left corner of box
         self.lineOney = None
         self.lineTwoX = None

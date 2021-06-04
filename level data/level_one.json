@@ -25,7 +25,7 @@
       "npc1": {
         "npc_name": "",
         "npc_dialog_file_location" : "",
-        "npc_movement_path": "",
+        "npc_movement_path": [[0,0],[12,13]],
         "npc_trigger_event_index": ""
       }
     }
@@ -49,6 +49,16 @@
     }
   },
   "events": {
+    "one": {
+      "type": "trigger",
+      "reckt": [123,123,10,10],
+
+      },
+    "two": {
+      "type": "onLevelStart",
+      "path": [[12,32],[123,455]]
+    }
+    }
 
   }
 }
