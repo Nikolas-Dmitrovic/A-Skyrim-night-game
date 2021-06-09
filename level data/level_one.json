@@ -7,17 +7,23 @@
     "movable": false
   },
   "main_character": {
-    "defultimage" : "",
-    "number of animation" : "1",
-    "starting_positionx" :  960,
-    "starting_positiony" : 540,
-    "rect_dim_x" : 10,
+    "defultimage": "",
+    "number of animation": "1",
+    "animations folder": "characters",
+    "animation images left": ["sprite_standing.png,sprite_standing.png"],
+    "animation images right": [],
+    "animation images forward": [],
+    "animation images back": [],
+    "starting_positionx": 960,
+    "starting_positiony": 540,
+    "rect_dim_x": 10,
     "rect_dim_y": 10,
-    "file_location" : "characters",
+    "file_location": "characters",
     "file_name": "sprite_standing.png",
     "image_scale_x": 192,
     "image_scale_y": 108,
-    "image_rotation": 0,
+    "image_rotation": 0
+  },
 
   "npc": {
     "number_of_npcs" : 0,
@@ -30,8 +36,7 @@
       }
     }
 
-    }
-  },
+    },
   "triggers": {
     "triggers_exist": true,
     "number of triggers": 1,
@@ -51,7 +56,7 @@
   "events": {
     "one": {
       "type": "trigger",
-      "reckt": [123,123,10,10],
+      "reckt": [123,123,10,10]
 
       },
     "two": {
@@ -61,4 +66,3 @@
     }
 
   }
-}

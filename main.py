@@ -1,11 +1,5 @@
-# TODO create
-# TODO create stage class takes the stage, and triggering points as input
 # TODO create animatic modal and implement into stage modal
-# TODO create level loader modal
-# TODO create movement logic modal
-# TODO create character class
 # TODO move all state changes into a single class
-# TODO make a scene changer modual
 # TODO add basic config json file to change stuff like movement speed
 
 # TODO imports all the scripts and code library's
@@ -39,4 +33,26 @@ def main():
 
 
 if __name__ == "__main__":
-    main()6
+    # main()
+
+    def switch_demo(argument):
+
+        def left():
+            print("hello")
+
+        switcher = {
+            1: "January",
+            2: "February",
+            3: "March",
+            4: "April",
+            5: "May",
+            6: "June",
+            7: "July",
+            8: "August",
+            9: "September",
+            10: "October",
+            11: "November",
+            12: left()
+        }
+        switcher.get(argument, "Invalid month")
+    switch_demo(12)

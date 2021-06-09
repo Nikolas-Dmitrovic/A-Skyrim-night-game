@@ -47,21 +47,23 @@ class stage_one:
         self.state = 'stage'
         self.background = background
         self.character = character
-        self.textbox = text_box(STAGE, "pog")
-        self.npcOne = NPC(data, False)
-        self.play_movement = movement(data, self.character, self.background, (
-            (self.character.x <= 300), (self.character.x >= 1620), (self.character.y <= 300),
-            (self.character.y >= 780)))
+        self.npcOne = NPC(data, "npc1", False)
+        self.play_movement = movement(data, self.character, self.background)
+        self.text = text_box(STAGE, "sample text file")
 
     def load_stage(self):
         self.quit_check()
-
+        WIN.fill(WHITE)
         keys_pressed = pygame.key.get_pressed()
-        self.play_movement.handle_movment(keys_pressed)
-        draw_window_stage1(background, character)
-        self.textbox.draw_textbox()
-        self.npcOne.draw_npc()
-        # self.npcone.npc_handel_movements(((1, 2), (3, 4)))
+        self.play_movement.handle_movment(keys_pressed, (
+            (self.character.x <= 300), (self.character.x >= 1600), (self.character.y <= 300),
+            (self.character.y >= 780)))
+        # draw_window_stage1(background, character)
+        WIN.blit(STAGE, (self.background.x, self.background.y))
+        self.text.draw_textbox()
+        # self.npcOne.draw_npc()
+        self.text.text_animation()
+
         pygame.display.update()
 
     @staticmethod

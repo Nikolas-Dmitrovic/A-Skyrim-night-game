@@ -12,7 +12,7 @@ import timeings_classes as time
 
 
 class NPC:
-    def __init__(self, data, npcDataIndex, movement, ):
+    def __init__(self, data, npcDataIndex, movement ):
         self.data = data
         # TODO add these fields to level one json and modify indexes here
         self.character = pygame.Rect(data["main_character"]["starting_positionx"],
