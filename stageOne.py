@@ -1,7 +1,5 @@
 # TODO create trigger event
 # TODO optimise code
-# TODO create json level data
-# TODO finish character movement and import and implement into this module
 
 
 import sys
@@ -11,11 +9,7 @@ import os
 import json
 from text_engine import text_box
 from NPC_handler import NPC
-from movement import movement
-
-# imports and sets variable for stage
-# TODO change this to take json variables based on level data
-# TODO set up movement limit data
+from movement import movement, animated_movment
 
 # opens json file
 f = open(os.path.join('level data', 'level_one.json'))
@@ -48,7 +42,7 @@ class stage_one:
         self.background = background
         self.character = character
         self.npcOne = NPC(data, "npc1", False)
-        self.play_movement = movement(data, self.character, self.background)
+        self.play_movement = animated_movment(data, self.character, self.background)
         self.text = text_box(STAGE, "sample text file")
 
     def load_stage(self):

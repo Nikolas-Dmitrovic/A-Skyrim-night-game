@@ -9,8 +9,6 @@ from stageOne import stage_one
 
 pygame.init()
 
-# TODO screen constants and initialise screen
-# TODO make changes to change scream size and resolution
 # from timeings_classes import timing
 
 game_state = Gamestate_main_menu()
@@ -33,26 +31,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-
-    def switch_demo(argument):
-
-        def left():
-            print("hello")
-
-        switcher = {
-            1: "January",
-            2: "February",
-            3: "March",
-            4: "April",
-            5: "May",
-            6: "June",
-            7: "July",
-            8: "August",
-            9: "September",
-            10: "October",
-            11: "November",
-            12: left()
-        }
-        switcher.get(argument, "Invalid month")
-    switch_demo(12)
+    main()

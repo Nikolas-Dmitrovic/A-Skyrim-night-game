@@ -8,9 +8,9 @@
   },
   "main_character": {
     "defultimage": "",
-    "number of animation": "1",
+    "number of animations": 1,
     "animations folder": "characters",
-    "animation images left": ["sprite_standing.png,sprite_standing.png"],
+    "animation images left": "sprite_standing_left.png",
     "animation images right": [],
     "animation images forward": [],
     "animation images back": [],

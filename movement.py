@@ -116,8 +116,10 @@ class animated_movment:
 
         self.animationImagesRight = list()
         self.animationIndexRight = 0
+        '''
         for i in range(self.numberOfanimations):
             self.animationImagesRight.append(self.data["main_character"]["animation images right"][i])
+            
 
         self.animationImagesForward = list()
         self.animationIndexForward = 0
@@ -127,7 +129,7 @@ class animated_movment:
         self.animationImagesBack = list()
         self.animationIndexBack = 0
         for i in range(self.numberOfanimations):
-            self.animationImagesBack.append(self.data["main_character"]["animation images back"][i])
+            self.animationImagesBack.append(self.data["main_character"]["animation images back"][i])'''
 
     # create standing resent function
 
@@ -135,11 +137,18 @@ class animated_movment:
 
         # figure out timings
         def left():
-            image = self.animationImagesLeft[self.animationIndexLeft]
-
-            if self.animationIndexLeft < self.numberOfanimations - 1:
+            # image = self.animationImagesLeft[self.animationIndexLeft]
+            image = pygame.transform.rotate(
+                pygame.transform.scale(
+                    pygame.image.load(
+                        os.path.join(self.data["main_character"]["file_location"],
+                                     self.data["main_character"]["animation images left"])), (192, 108)), 0)
+            if self.animationIndexLeft < self.numberOfanimations:
                 WIN.blit(image, (self.character.x, self.character.y))
-            if self.animationImagesLeft >= self.numberOfanimations:
+                print(1)
+                self.animationIndexLeft += 1
+            if self.animationIndexLeft >= self.numberOfanimations:
+                print(2)
                 WIN.blit(image, (self.character.x, self.character.y))
                 self.animationIndexLeft = 0
 
@@ -178,6 +187,7 @@ class animated_movment:
     def handle_movment_background_static(self, keys_pressed):
         if keys_pressed[pygame.K_a]:  # LEFT
             self.character.x -= VEL
+            self.animation_handler("left")
             if self.x_left:
                 self.character.x += VEL
 
