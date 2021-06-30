@@ -9,7 +9,7 @@ import os
 import json
 from text_engine import text_box
 from NPC_handler import NPC
-from movement import movement, animated_movment
+from movement import movement, animated_movement
 
 # opens json file
 f = open(os.path.join('level data', 'level_one.json'))
@@ -42,14 +42,14 @@ class stage_one:
         self.background = background
         self.character = character
         self.npcOne = NPC(data, "npc1", False)
-        self.play_movement = animated_movment(data, self.character, self.background)
+        self.play_movement = animated_movement(data, self.character, self.background)
         self.text = text_box(STAGE, "sample text file")
 
     def load_stage(self):
         self.quit_check()
         WIN.fill(WHITE)
         keys_pressed = pygame.key.get_pressed()
-        self.play_movement.handle_movment(keys_pressed, (
+        self.play_movement.handle_movement(keys_pressed, (
             (self.character.x <= 300), (self.character.x >= 1600), (self.character.y <= 300),
             (self.character.y >= 780)))
         # draw_window_stage1(background, character)

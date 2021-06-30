@@ -92,7 +92,7 @@ class movement:
             self.character.y -= VEL
 
 
-class animated_movment:
+class animated_movement:
 
     def __init__(self, data, character, background):
         self.data = data
@@ -119,47 +119,78 @@ class animated_movment:
         '''
         for i in range(self.numberOfanimations):
             self.animationImagesRight.append(self.data["main_character"]["animation images right"][i])
-            
+            '''
 
         self.animationImagesForward = list()
         self.animationIndexForward = 0
+        '''
         for i in range(self.numberOfanimations):
             self.animationImagesForward.append(self.data["main_character"]["animation images forward"][i])
-
+'''
         self.animationImagesBack = list()
         self.animationIndexBack = 0
+        '''
         for i in range(self.numberOfanimations):
             self.animationImagesBack.append(self.data["main_character"]["animation images back"][i])'''
 
     # create standing resent function
 
     def animation_handler(self, direction):
-
+        def draw(image):
+            WIN.blit(image, (self.character.x,self.character.y))
         # figure out timings
         def left():
-            # image = self.animationImagesLeft[self.animationIndexLeft]
             image = pygame.transform.rotate(
                 pygame.transform.scale(
                     pygame.image.load(
                         os.path.join(self.data["main_character"]["file_location"],
                                      self.data["main_character"]["animation images left"])), (192, 108)), 0)
             if self.animationIndexLeft < self.numberOfanimations:
-                WIN.blit(image, (self.character.x, self.character.y))
-                print(1)
+                draw(image)
                 self.animationIndexLeft += 1
             if self.animationIndexLeft >= self.numberOfanimations:
-                print(2)
-                WIN.blit(image, (self.character.x, self.character.y))
+                draw(image)
                 self.animationIndexLeft = 0
 
         def right():
-            pass
+            image = pygame.transform.rotate(
+                pygame.transform.scale(
+                    pygame.image.load(
+                        os.path.join(self.data["main_character"]["file_location"],
+                                     self.data["main_character"]["animation images right"])), (192, 108)), 0)
+            if self.animationIndexRight < self.numberOfanimations:
+                draw(image)
+                self.animationIndexRight += 1
+            if self.animationIndexRight >= self.numberOfanimations:
+                draw(image)
+                self.animationIndexRight = 0
 
         def forward():
-            pass
+            image = pygame.transform.rotate(
+                pygame.transform.scale(
+                    pygame.image.load(
+                        os.path.join(self.data["main_character"]["file_location"],
+                                     self.data["main_character"]["animation images forward"])), (192, 108)), 0)
+            if self.animationIndexForward < self.numberOfanimations:
+                draw(image)
+                self.animationIndexForward += 1
+            if self.animationIndexForward <= self.numberOfanimations:
+                draw(image)
+                self.animationIndexForward = 0
 
         def back():
-            pass
+            image = pygame.transform.rotate(
+                pygame.transform.scale(
+                    pygame.image.load(
+                        os.path.join(self.data["main_character"]["file_location"],
+                                     self.data["main_character"]["animation images back"])), (192, 108)), 0)
+
+            if self.animationIndexBack < self.numberOfanimations:
+                draw(image)
+                self.animationIndexBack += 1
+            if self.animationIndexBack <= self.numberOfanimations:
+                draw(image)
+                self.animationIndexBack = 0
 
         def getDirection(argument):
             switcher = {
@@ -168,23 +199,23 @@ class animated_movment:
                 "forward": forward(),
                 "back": back(),
             }
-            switcher.get(argument, "Invalid month")
+            switcher.get(argument, "Invalid direction")
 
         getDirection(direction)
 
-    def handle_movment(self, keys_pressed, limits):
+    def handle_movement(self, keys_pressed, limits):
         self.x_left = limits[0]
         self.x_right = limits[1]
         self.y_up = limits[2]
         self.y_down = limits[3]
 
         if not self.data["background"]["movable"]:
-            self.handle_movment_background_static(keys_pressed)
+            self.handle_movement_background_static(keys_pressed)
 
         if self.data["background"]["movable"]:
             self.background_handle_movement(keys_pressed)
 
-    def handle_movment_background_static(self, keys_pressed):
+    def handle_movement_background_static(self, keys_pressed):
         if keys_pressed[pygame.K_a]:  # LEFT
             self.character.x -= VEL
             self.animation_handler("left")
