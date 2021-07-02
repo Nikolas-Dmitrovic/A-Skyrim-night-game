@@ -14,7 +14,7 @@ class movement:
         self.x_right = None
         self.y_up = None
         self.y_down = None
-        self.VEL = 5
+        self.VEL = VEL
 
     def handle_movment(self, keys_pressed, limits):
         self.x_left = limits[0]
@@ -34,17 +34,17 @@ class movement:
             if self.x_left:
                 self.character.x += VEL
 
-        if keys_pressed[pygame.K_d]:  # Right
+        elif keys_pressed[pygame.K_d]:  # Right
             self.character.x += VEL
             if self.x_right:
                 self.character.x -= VEL
 
-        if keys_pressed[pygame.K_w]:  # UP
+        elif keys_pressed[pygame.K_w]:  # UP
             self.character.y -= VEL
             if self.y_up:
                 self.character.y += VEL
 
-        if keys_pressed[pygame.K_s]:  # DOWN
+        elif keys_pressed[pygame.K_s]:  # DOWN
             self.character.y += VEL
             if self.y_down:
                 self.character.y -= VEL
@@ -60,21 +60,21 @@ class movement:
             if self.character.x > 300:
                 self.character.x -= VEL
 
-        if keys_pressed[pygame.K_d]:  # Right
+        elif keys_pressed[pygame.K_d]:  # Right
             if self.x_right:
                 self.background.x += VEL / 2
                 self.character.x = 1620
 
             self.character.x += VEL
 
-        if keys_pressed[pygame.K_w]:  # UP
+        elif keys_pressed[pygame.K_w]:  # UP
             if self.y_up:
                 self.background.y -= VEL / 2
                 self.character.y = 300
 
             self.character.y -= VEL
 
-        if keys_pressed[pygame.K_s]:  # DOWN
+        elif keys_pressed[pygame.K_s]:  # DOWN
             if self.y_down:
                 self.background.y += VEL / 2
                 self.character.y = 780
@@ -84,11 +84,11 @@ class movement:
     def stop_character(self, key_pressed):
         if key_pressed[pygame.K_a]:  # left
             self.character.x += VEL
-        if key_pressed[pygame.K_d]:  # left
+        elif key_pressed[pygame.K_d]:  # left
             self.character.x -= VEL
-        if key_pressed[pygame.K_w]:  # left
+        elif key_pressed[pygame.K_w]:  # left
             self.character.y += VEL
-        if key_pressed[pygame.K_s]:  # left
+        elif key_pressed[pygame.K_s]:  # left
             self.character.y -= VEL
 
 
@@ -195,9 +195,9 @@ class animated_movement:
         def getDirection(argument):
             switcher = {
                 "left": left(),
-                "right": right(),
-                "forward": forward(),
-                "back": back(),
+                # "right": right(),
+                # "forward": forward(),
+                # "back": back(),
             }
             switcher.get(argument, "Invalid direction")
 

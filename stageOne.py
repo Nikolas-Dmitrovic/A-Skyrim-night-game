@@ -1,5 +1,6 @@
 # TODO create trigger event
 # TODO optimise code
+# TODO add code to close opened files and shit
 
 
 import sys
@@ -41,7 +42,7 @@ class stage_one:
         self.state = 'stage'
         self.background = background
         self.character = character
-        self.npcOne = NPC(data, "npc1", False)
+        self.npcOne = NPC(data, "npc1", movement = False)
         self.play_movement = animated_movement(data, self.character, self.background)
         self.text = text_box(STAGE, "sample text file")
 

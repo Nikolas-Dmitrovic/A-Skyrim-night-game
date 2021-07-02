@@ -60,7 +60,6 @@ class text_box:
     def text_unpacker(self):
         for lines in self.text:
             self.text_lines.append(lines)
-            print(lines)
 
     def text_writer(self):
         text1 = self.font.render(self.text_lines[0], True, (0, 0, 0))
@@ -83,10 +82,10 @@ class text_box:
         self.text_cover()
 
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            '''if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-                sys.exit()
+                sys.exit()'''
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
@@ -98,8 +97,3 @@ class text_box:
                         self.moveCounter = 0
                         self.indexLineTwo += 2
                         self.indexLineTwo += 2
-
-                if event.key == pygame.K_ESCAPE:
-                    run = False
-                    pygame.quit()
-                    sys.exit()

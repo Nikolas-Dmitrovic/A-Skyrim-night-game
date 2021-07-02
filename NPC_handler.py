@@ -1,5 +1,3 @@
-#  done - def draw npc
-# - done - def npc movement handler
 # def npc events- includes movement activation and text triggers
 import pygame
 import os
@@ -8,11 +6,11 @@ import timeings_classes as time
 
 
 # temp test path add this to json file afterwords
-# path = ((1,1),(2,2))6
+# path = ((1,1),(2,2))
 
 
 class NPC:
-    def __init__(self, data, npcDataIndex, movement ):
+    def __init__(self, data, npcDataIndex, movement = False, poggers = False):
         self.data = data
         # TODO add these fields to level one json and modify indexes here
         self.character = pygame.Rect(data["main_character"]["starting_positionx"],
@@ -32,6 +30,8 @@ class NPC:
             self.path_unpacker()
 
         self.npc_text = data["npc"]["npc_info"][npcDataIndex]["npc_dialog_file_location"]
+        if poggers:
+            print('hello')
 
     def draw_npc(self):
         WIN.blit(self.npc, (self.character.x, self.character.y))
@@ -92,6 +92,12 @@ class paths:
 
         self.effectic_distance = self.dis()
         self.movementTicks = self.getTicks()
+
+    def __repr__(self) -> str:
+        pass
+
+    def __add__(self):
+        pass
 
     def slope(self):
 

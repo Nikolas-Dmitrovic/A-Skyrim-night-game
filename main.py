@@ -6,14 +6,16 @@
 import pygame
 from main_menu import Gamestate_main_menu
 from stageOne import stage_one
+import time
 
 pygame.init()
 pygame.display.set_caption("12")
 # from timings_classes import timing
 
+time_start = time.time()
 game_state = Gamestate_main_menu()
 mainMenu = True
-stage = stage_one()
+stage = stage_one
 
 
 def main():
@@ -25,7 +27,7 @@ def main():
             check = game_state.state_manager()
 
         if mainMenu:
-            stage.state_manager()
+            stage[0].state_manager()
 
     pygame.quit()
 

@@ -19,6 +19,5 @@ class triggers:
     def detection(self):
         for i in self.list:
             if self.character.colliderect(i):
-                # self.movement_object.do something lmao()
                 keys_pressed = pygame.key.get_pressed()
-                self.movementObject.stop_character()
+                self.movementObject.stop_character(keys_pressed)
