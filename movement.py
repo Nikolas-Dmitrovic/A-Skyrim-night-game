@@ -3,7 +3,7 @@ from GLOBAL_VARIABLES import VEL, WIN
 import os
 
 
-# movemnet without any animations
+# movement without any animations
 class movement:
 
     def __init__(self, data, character, background):
@@ -222,20 +222,28 @@ class animated_movement:
             if self.x_left:
                 self.character.x += VEL
 
-        if keys_pressed[pygame.K_d]:  # Right
+        elif keys_pressed[pygame.K_d]:  # Right
             self.character.x += VEL
             if self.x_right:
                 self.character.x -= VEL
 
-        if keys_pressed[pygame.K_w]:  # UP
+        elif keys_pressed[pygame.K_w]:  # UP
             self.character.y -= VEL
             if self.y_up:
                 self.character.y += VEL
 
-        if keys_pressed[pygame.K_s]:  # DOWN
+        elif keys_pressed[pygame.K_s]:  # DOWN
             self.character.y += VEL
             if self.y_down:
                 self.character.y -= VEL
+
+        else:
+            image = pygame.transform.rotate(
+                pygame.transform.scale(
+                    pygame.image.load(
+                        os.path.join(self.data["main_character"]["file_location"],
+                                     self.data["main_character"]["file_name"])), (192, 108)), 0)
+            WIN.blit(image, (self.character.x, self.character.y))
 
     def background_handle_movement(self, keys_pressed):
         # TODO create limits to read from json file

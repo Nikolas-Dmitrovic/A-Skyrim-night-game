@@ -8,8 +8,8 @@ from main_menu import Gamestate_main_menu
 from stageOne import stage_one
 
 pygame.init()
-
-# from timeings_classes import timing
+pygame.display.set_caption("12")
+# from timings_classes import timing
 
 game_state = Gamestate_main_menu()
 mainMenu = True
