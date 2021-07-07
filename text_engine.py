@@ -62,19 +62,22 @@ class text_box:
             self.text_lines.append(lines)
 
     def text_writer(self):
-        text1 = self.font.render(self.text_lines[0], True, (0, 0, 0))
-        textRect1 = text1.get_rect()
-        textRect1.topleft = (self.lineOneX, self.lineOney)
+        if self.indexLineOne <= len(self.text_lines):
+            # print(self.indexLineOne)
+            text1 = self.font.render(self.text_lines[self.indexLineOne], True, (0, 0, 0))
+            textRect1 = text1.get_rect()
+            textRect1.topleft = (self.lineOneX, self.lineOney)
+            WIN.blit(text1, textRect1)
 
-        text2 = self.font.render(self.text_lines[1], True, (0, 0, 0))
-        textRect2 = text2.get_rect()
-        textRect2.topleft = (self.lineTwoX, self.lineTWOY)
-
-        WIN.blit(text1, textRect1)
-        WIN.blit(text2, textRect2)
+        if not self.indexLineTwo >= len(self.text_lines):
+            print(self.indexLineTwo >= len(self.text_lines))
+            text2 = self.font.render(self.text_lines[self.indexLineTwo], True, (0, 0, 0))
+            textRect2 = text2.get_rect()
+            textRect2.topleft = (self.lineTwoX, self.lineTWOY)
+            WIN.blit(text2, textRect2)
 
     def text_cover(self):
-        return pygame.draw.rect(self.surface, (0,0,0), self.block)
+        return pygame.draw.rect(self.surface, (0, 0, 0), self.block)
 
     def text_animation(self):
 
@@ -93,7 +96,7 @@ class text_box:
                         self.block.y += self.moveDownAmount
                         self.moveCounter += 1
                     if self.moveCounter == 3:
-                        self.block.y -= 3*self.moveDownAmount
+                        self.block.y -= 3 * self.moveDownAmount
                         self.moveCounter = 0
-                        self.indexLineTwo += 2
+                        self.indexLineOne += 2
                         self.indexLineTwo += 2

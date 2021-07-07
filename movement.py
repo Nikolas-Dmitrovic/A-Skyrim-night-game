@@ -16,35 +16,35 @@ class movement:
         self.y_down = None
         self.VEL = VEL
 
-    def handle_movment(self, keys_pressed, limits):
+    def handle_movement(self, keys_pressed, limits):
         self.x_left = limits[0]
         self.x_right = limits[1]
         self.y_up = limits[2]
         self.y_down = limits[3]
 
         if not self.data["background"]["movable"]:
-            self.handle_movment_background_static(keys_pressed)
+            self.handle_movement_background_static(keys_pressed)
 
         if self.data["background"]["movable"]:
             self.background_handle_movement(keys_pressed)
 
-    def handle_movment_background_static(self, keys_pressed):
+    def handle_movement_background_static(self, keys_pressed):
         if keys_pressed[pygame.K_a]:  # LEFT
             self.character.x -= VEL
             if self.x_left:
                 self.character.x += VEL
 
-        elif keys_pressed[pygame.K_d]:  # Right
+        if keys_pressed[pygame.K_d]:  # Right
             self.character.x += VEL
             if self.x_right:
                 self.character.x -= VEL
 
-        elif keys_pressed[pygame.K_w]:  # UP
+        if keys_pressed[pygame.K_w]:  # UP
             self.character.y -= VEL
             if self.y_up:
                 self.character.y += VEL
 
-        elif keys_pressed[pygame.K_s]:  # DOWN
+        if keys_pressed[pygame.K_s]:  # DOWN
             self.character.y += VEL
             if self.y_down:
                 self.character.y -= VEL
@@ -60,21 +60,21 @@ class movement:
             if self.character.x > 300:
                 self.character.x -= VEL
 
-        elif keys_pressed[pygame.K_d]:  # Right
+        if keys_pressed[pygame.K_d]:  # Right
             if self.x_right:
                 self.background.x += VEL / 2
                 self.character.x = 1620
 
             self.character.x += VEL
 
-        elif keys_pressed[pygame.K_w]:  # UP
+        if keys_pressed[pygame.K_w]:  # UP
             if self.y_up:
                 self.background.y -= VEL / 2
                 self.character.y = 300
 
             self.character.y -= VEL
 
-        elif keys_pressed[pygame.K_s]:  # DOWN
+        if keys_pressed[pygame.K_s]:  # DOWN
             if self.y_down:
                 self.background.y += VEL / 2
                 self.character.y = 780
@@ -84,11 +84,11 @@ class movement:
     def stop_character(self, key_pressed):
         if key_pressed[pygame.K_a]:  # left
             self.character.x += VEL
-        elif key_pressed[pygame.K_d]:  # left
+        if key_pressed[pygame.K_d]:  # left
             self.character.x -= VEL
-        elif key_pressed[pygame.K_w]:  # left
+        if key_pressed[pygame.K_w]:  # left
             self.character.y += VEL
-        elif key_pressed[pygame.K_s]:  # left
+        if key_pressed[pygame.K_s]:  # left
             self.character.y -= VEL
 
 

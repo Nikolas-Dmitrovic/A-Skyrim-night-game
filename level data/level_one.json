@@ -1,9 +1,9 @@
 {
-  "background":{
-    "base_level_location" : "stages",
+  "background": {
+    "base_level_location": "stages",
     "file_name": "pixil-frame-0.png",
-    "level_x_dim" : 1920,
-    "level_y_dim" : 1080,
+    "level_x_dim": 1920,
+    "level_y_dim": 1080,
     "movable": false
   },
   "main_character": {
@@ -24,45 +24,144 @@
     "image_scale_y": 108,
     "image_rotation": 0
   },
-
   "npc": {
-    "number_of_npcs" : 0,
+    "number_of_npcs": 0,
     "npc_info": {
       "npc1": {
         "npc_name": "",
-        "npc_dialog_file_location" : "",
-        "npc_movement_path": [[0,0],[12,13]],
+        "npc_dialog_file_location": "",
+        "npc_movement_path": [
+          [
+            0,
+            0
+          ],
+          [
+            12,
+            13
+          ]
+        ],
         "npc_trigger_event_index": ""
       }
     }
-
-    },
+  },
   "triggers": {
     "triggers_exist": true,
     "number of triggers": 1,
-    "triggers_info" : {
+    "triggers_info": {
       "trig one": {
-        "type" : "collison",
-        "cords": [123,345],
-        "dims": [123,123],
-        "trigger_event" : null
+        "type": "collison",
+        "cords": [
+          300,
+          520
+        ],
+        "dims": [
+          254,
+          80
+        ],
+        "trigger_event": null
       },
       "trig two": {
-        "type" : "collison"
-
+        "type": "collison",
+        "cords": [
+          1170,
+          530
+        ],
+        "dims": [
+          180,
+          55
+        ],
+        "trigger_event": null
+      },
+      "trig three": {
+        "type": "collison",
+        "cords": [
+          1495,
+          525
+        ],
+        "dims": [
+          180,
+          60
+        ],
+        "trigger_event": null
+      },
+      "trig four": {
+        "type": "collison",
+        "cords": [
+          325,
+          765
+        ],
+        "dims": [
+          200,
+          60
+        ],
+        "trigger_event": null
+      },
+      "trig five": {
+        "type": "collison",
+        "cords": [
+          1170,
+          760
+        ],
+        "dims": [
+          200,
+          65
+        ],
+        "trigger_event": null
+      },
+      "trig six": {
+        "type": "collison",
+        "cords": [
+          1490,
+          765
+        ],
+        "dims": [
+          185,
+          60
+        ],
+        "trigger_event": null
+      },
+      "trig seven": {
+        "type": "collison",
+        "cords": [
+          1495,
+          525
+        ],
+        "dims": [
+          180,
+          60
+        ],
+        "triggerevent": null
+      },
+      "trig eight": {
+        "type": "collison",
+        "cords": [425,235],
+        "dims": [1300,115],
+        "triggerevent": null
+      }
+    },
+    "events": {
+      "one": {
+        "type": "trigger",
+        "reckt": [
+          123,
+          123,
+          10,
+          10
+        ]
+      },
+      "two": {
+        "type": "onLevelStart",
+        "path": [
+          [
+            12,
+            32
+          ],
+          [
+            123,
+            455
+          ]
+        ]
       }
     }
-  },
-  "events": {
-    "one": {
-      "type": "trigger",
-      "reckt": [123,123,10,10]
-
-      },
-    "two": {
-      "type": "onLevelStart",
-      "path": [[12,32],[123,455]]
-    }
-    }
-
   }
+}
