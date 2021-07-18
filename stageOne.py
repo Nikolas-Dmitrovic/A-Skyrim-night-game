@@ -72,7 +72,7 @@ class stage_one:
         self.state = 'stage'
         self.background = background
         self.character = character
-        self.npcOne = NPC(data, "npc1", movement=False)
+        # self.npcOne = NPC(data, "npc1", movement=False)
         self.play_movement = movement(data, self.character, self.background)
         self.text = text_box(STAGE, "sample text file")
         self.triggers = triggers(character, data, self.play_movement)
@@ -90,10 +90,10 @@ class stage_one:
         self.triggers.detection(test=True, surface=STAGE)
         # WIN.blit(STAGE, (self.background.x, self.background.y))
 
-
-        self.text.draw_textbox()
         # self.npcOne.draw_npc()
-        self.text.text_animation()
+
+        # self.text.draw_textbox()
+        # self.text.text_animation()
 
         pygame.display.update()
 

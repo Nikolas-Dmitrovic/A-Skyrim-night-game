@@ -13,8 +13,8 @@ class NPC:
     def __init__(self, data, npcDataIndex, movement = False, poggers = False):
         self.data = data
         # TODO add these fields to level one json and modify indexes here
-        self.character = pygame.Rect(data["main_character"]["starting_positionx"],
-                                     data["main_character"]["starting_positiony"],
+        self.character = pygame.Rect(data["npc"]["npcStartPosition"][0],
+                                     data["npc"]["npcStartPosition"][1],
                                      data["main_character"]["rect_dim_x"], data["main_character"]["rect_dim_y"])
         self.npc = pygame.transform.rotate(
             pygame.transform.scale(

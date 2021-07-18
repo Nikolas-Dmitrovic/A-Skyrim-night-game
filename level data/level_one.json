@@ -30,6 +30,8 @@
       "npc1": {
         "npc_name": "",
         "npc_dialog_file_location": "",
+        "npcStartPosition": [100,100],
+        "npcRectDim": [10,10],
         "npc_movement_path": [
           [
             0,
