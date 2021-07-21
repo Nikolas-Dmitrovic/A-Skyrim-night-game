@@ -11,6 +11,7 @@ typedef struct{
     FnPrt draw;
     FnPrt destroy;
     int stackIndex;
+    int onStack;
 
 
 } State;

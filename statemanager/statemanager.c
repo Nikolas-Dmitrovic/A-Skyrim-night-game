@@ -3,7 +3,8 @@
 #include<stdlib.h>
 #include "pythondevfiles/include/python.h"
 
-// TODO implement state index in stack
+// TODO implement state index in stack 
+//also implent int onstack check to see if it is on the stack(defult value of zero on build means it is not on the stack, when value is 1 it means it is on the stack)
 
 
 unsigned returnNum(){
@@ -64,7 +65,7 @@ int STATEMANAGER_pop(StateManager *statemanager){
     return statemanager -> top;
 }
 
-int *STATEMANAGER_top(StateManager *statemanager){
+State *STATEMANAGER_top(StateManager *statemanager){
     return statemanager -> stack[statemanager ->top];
 }
 
@@ -102,30 +103,31 @@ int STATEMANAGER_pushtobottom(StateManager *statemanager, State* state){
 
 int STATEMANAGER_swapstates(StateManager *statemanager, State* state){
     
-    //
+    //figure out how to check if a state is on the stack
 
 
 
     if(state == STATEMANAGER_top(statemanager)) return 0;
 
     // get the top state with the STATEMANAGER_top function
+    State top = *STATEMANAGER_top(statemanager);
 
     // create two temp states and do not pushthem to the stack
     //ie
-    //State tempstate1 = topstate
-    //State tempstate2 = state
+    State tempstate1 = top;
+    State tempstate2 = state;
 
-    // use indexs to sitch states
+    // use indexs to switch states
     // ie
-    //state = tempsate1
-    //topstate = tempstate2
+    state = tempstate1;
+    top = tempstate2;
 
-    return 0;
+    return 
 }
 
 
 
-
+// create simple test funtions
 
 
 
@@ -149,4 +151,291 @@ static PyObject* STATEMANAGER_init(PyObject* self, PyObject* args){
 
 }
 
-
+void main(){
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    printf("hello world");
+    
+}
