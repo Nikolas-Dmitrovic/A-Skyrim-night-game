@@ -1,8 +1,10 @@
 #ifndef ENGINE_STATEMANAGER_H
 #define ENGINE_STATEMANAGER_H
 
+//add c suffix to all functions written in to distigusih the diffrence between the python wrappers and c funcs
+
 typedef unsigned int (*FnPrt)();
-// typedef unsigned int (*FnPrt)(float);
+typedef unsigned int (*FnPrt)(float);
 
 
 typedef struct{
@@ -36,14 +38,20 @@ void Statestruct_rebuild();
 // inits the stack, sets the capacity, allocates memory, and indexs the top value
 
 // destroys each state untill stack is empty
-int STATEMANAGER_init(StateManager *statemanager);
-int STATEMANAGER_free(StateManager *statemanager);
-int STATEMANAGER_push(StateManager *statemanager, State *state);
-int STATEMANAGER_pop(StateManager *statemanager);
-int STATEMANAGER_scale(Statemanager *statemanager);
-State *STATEMANAGER_top(StateManager *statemanager);
-int STATEMANAGER_update(StateManager *statemanager, float deltatime);
-int STATEMANAGER_draw(StateManager *statemanager, float deltatime);
+int STATEMANAGER_initC(StateManager *statemanager);
+int STATEMANAGER_freeC(StateManager *statemanager);
+int STATEMANAGER_pushC(StateManager *statemanager, State *state);
+int STATEMANAGER_popC(StateManager *statemanager);
+int STATEMANAGER_scaleC(Statemanager *statemanager);
+State *STATEMANAGER_topC(StateManager *statemanager);
+int STATEMANAGER_updateC(StateManager *statemanager, float deltatime);
+int STATEMANAGER_drawC(StateManager *statemanager, float deltatime);
+int STATEMANAGER_pushtobottomC(StateManager *statemanager, State* state);
+int STATEMANAGER_movetobottomC(StateManager *statemanager, State* state);
+int STATEMANAGER_movetotopC(StateManager *statemanager, State* state);
+int STATEMANAGER_movetoposC(StateManager *statemanager, State* state, int indexpos);
+int STATEMANAGER_swapstatesC(StateManager *statemanager, State* state);
+
 
 
 

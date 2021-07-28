@@ -1,0 +1,4 @@
+Fnprt is an usinged type function pointer used to add functions to structs
+
+the type State is a sturct container used to define scenes and be used in the state manager stackIndex
+State has 4 functions pointers and two variables init, update, draw, destroy, stackIndex, and onStack
