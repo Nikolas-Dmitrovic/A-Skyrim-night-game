@@ -8,8 +8,15 @@ import pygame
 import timeings_classes as time
 
 
+
+"""
+make standerd events to not give yourself a fucking headache lmao
+
+"""
+
+
 class events:
-    def __init__(self, character, npcObject, data=None):
+    def __init__(self, character, npcObject, data=None, funcs = []):
 
         self.character = character
 
@@ -22,6 +29,9 @@ class events:
         self.npcObject = npcObject
         self.triggersList = list()
         self.onStartMovement = list()
+
+        #library for function pointers to have events
+        self.funcs = []
 
     def stage_events_JsonUnpacker(self):
 

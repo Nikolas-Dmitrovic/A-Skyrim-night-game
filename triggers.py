@@ -3,12 +3,22 @@ from GLOBAL_VARIABLES import WIN
 
 
 class triggers:
-    def __init__(self, character, data, movementObject):
-        self.character = character
-        self.data = data
-        self.movementObject = movementObject
-        self.detectionList = list()
-        self.unpacker()
+    def __init__(self, character, data, movementObject = None, exits = False):
+
+        if exits == True:
+            self.onRectCollison = list()
+            self.onPassingLimit = list()
+            self.onRectColliosnAndUserInput = list()
+
+            self.exitUnpacker()
+        
+        if exits == False:
+
+            self.character = character
+            self.data = data
+            self.movementObject = movementObject
+            self.detectionList = list()
+            self.unpacker()
 
     def unpacker(self):
         # TODO add type recognition
@@ -27,6 +37,11 @@ class triggers:
                 keys_pressed = pygame.key.get_pressed()
                 self.movementObject.stop_character(keys_pressed)
 
+
     @staticmethod
     def drawBoxes(rect, surface):
         pygame.draw.rect(surface, (0, 0, 0), rect)
+
+
+    def exitUnpacker():
+        pass

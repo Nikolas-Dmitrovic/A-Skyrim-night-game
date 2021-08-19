@@ -1,17 +1,15 @@
-create a function that turns a struct into a object and vise versa
+create trigger event
+optimise code
 
-(a) create wrapper fucntions in statemanager.c
+create events and checks for npcs and text boxes and shit lmao
 
-write the setup.py file for statemanager
-create make file to compile statemanager into .so format
 
-figure out how to parse json data in c vs how effective it is to pass it to c form python
-make a test json file to test the functions from statemanager.c
+make json file for statemanager to load shit at the right time
 
-create an algorithm that reads json data and manipulates the statemanager stack
 
-implement state data into json level files for inits and posibly making other states and manipulating them on the stack
+rework main menu to work with state manager
 
-create some defult states like pause menues
+implement more menues
 
-rework main menu to use statemanager to test the statemanager
+
+make make window scalling possible

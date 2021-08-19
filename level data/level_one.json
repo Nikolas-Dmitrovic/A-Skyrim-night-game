@@ -165,5 +165,20 @@
         ]
       }
     }
+  },
+  "exitTriggers":{
+    "Number of exits": 3,
+    "info":{
+      "triggerone":{
+        "type":"collison",
+        "rect":[0,0,100,100],
+        "exitStage": "stagetwo"
+      },
+      "triggertwo":{
+        "type": "limit",
+        "rect": [100,100,200,200],
+        "exitstage": "stagethree"
+      }
+    }
   }
 }

@@ -90,6 +90,7 @@ int STATEMANAGER_drawC(StateManager *statemanager, float deltatime) {
 
 // create a function that takes a python object and create a state struct for it, and then push it onto the stack
 // create a that allow a state to be pushed to a specific spot on the stack
+// TODO push current states up one
 int STATEMANAGER_pushtobottomC(StateManager *statemanager, State* state){
     if(state->onStack == 0) return 0;
 
@@ -187,6 +188,7 @@ int stateDraw();
 
 // create wrapper functions for state manager
 
+// takes a object and returns
 static PyObject* STATEMANAGER_init(PyObject* self, PyObject* args){
 
 
