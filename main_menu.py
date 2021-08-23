@@ -62,11 +62,11 @@ def menu_selection(key_pressed, select):
 # into images or gif imported and set as class variables
 
 # find better image that is 1920 by 1080
-art_image_0 = pygame.image.load(os.path.join('introArt', 'skyrimart.jpg'))
+art_image_0 = pygame.image.load(os.path.join('introArt', 'skyrimart.jpg')).convert()
 # art_image_0 = pygame.transform.rotate(pygame.transform.scale(art_image_raw0,()), 0)
-art_image_raw1 = pygame.image.load(os.path.join('introArt', 'skyrimart1.jpg'))
-art_image_raw2 = pygame.image.load(os.path.join('introArt', 'skyrimart2.jpg'))
-art_image_raw3 = pygame.image.load(os.path.join('introArt', 'skyrimart3.jpg'))
+art_image_raw1 = pygame.image.load(os.path.join('introArt', 'skyrimart1.jpg')).convert()
+art_image_raw2 = pygame.image.load(os.path.join('introArt', 'skyrimart2.jpg')).convert()
+art_image_raw3 = pygame.image.load(os.path.join('introArt', 'skyrimart3.jpg')).convert()
 
 
 # loads sound for into section

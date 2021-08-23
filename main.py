@@ -26,16 +26,6 @@ data = json.load(file)
 game_state = Gamestate_main_menu()
 mainMenu = True
 
-"""
-TODO create events that trigger the event manager to progress
-ie go though door and enter a new stage
-
-make statemanager check var in state to see if actions are needed
-
-
-make a text file to figure out algorithm step by step for this
-
-"""
 firstStateName = "stageone"
 cuurentStateIndex = "stageone"
 
@@ -46,39 +36,36 @@ statemanager = statemanagerclass()
 state = stage_one(data["stageone"]["json_file"], data["stageone"]["json_file_location"], exit_data= data)
 statemanager.push(state)
 
+# TODO add defult menu states at common indexs ex) [0] to [5]            
 
-if state.nextState == True:
-    """ add exit condions to the statemanager.json"""
-    "create temp triggers based on the exit conditions"
-    """ check if the condions are archived with the events module"""
-    """ return the name of the next state to add to the stack"""
-    """ do something"""
+"""
+if preformace degrades too much or fps drops below 50
+TODO create regions for the state manager to load
+TODO create pop calls before entering new reigion to reduce memory usage
 
+"""
 
-    """
-    create defult exit triggers; builders and checkers for each trigger
-    on collison
-    on passing limit
-    on colliosn and user input/keydown
-
-    TODO finish exit upacker in the tiggers.py module
-    
-    
-    """
-    pass
-
-
-def main(counter = 0):
+def main(counter = 0, exitstate = None):
     run = True
     clock = pygame.time.Clock()
     while run:
-        clock.tick(60)
+
+        state = statemanager.stack[statemanager.top]
+        exitstate = state.state
+        if exitstate != None:
+            newstate = stage_one(data[exitstate]["json_file"], data[exitstate]["json_file_location"], exit_data= data)
+            statemanager.push(newstate)
+            exitstate = None
+
         statemanager.update()
         statemanager.draw()
-        counter += 1
-        print(counter)
-        if counter >= 600:
-            statemanager.pop()
+        # counter += 1
+        # print(clock.get_fps())
+        # print(counter)
+        #if counter >= 600:
+        #    statemanager.pop()
+
+        clock.tick(60)
 
 
 

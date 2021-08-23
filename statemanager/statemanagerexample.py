@@ -26,12 +26,12 @@ class statemanager:
 
     # statemanager functions
     """top function does not work and i have no clue why"""
-    def top(self):
-        return self.stack[self.top]
+    """def top(self):
+        return self.stack[self.top]"""
 
     def pop(self):
         if (self.top == -1): return 0
-        self.stack[self.top].destory()
+        self.stack[self.top].destroy()
         del self.stack[self.top]
         self.top -= 1
         return self.top

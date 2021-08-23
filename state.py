@@ -43,8 +43,9 @@ class stage_one:
         self.STAGE = pygame.transform.rotate(
             pygame.transform.scale(
                 pygame.image.load(
-                    os.path.join(data["background"]["base_level_location"], data["background"]["file_name"]) ),
+                    os.path.join(data["background"]["base_level_location"], data["background"]["file_name"])).convert(),
                 (1920, 1080)), 0)
+
 
 
         
@@ -70,7 +71,7 @@ class stage_one:
         "return npc objects to check shit with this lmao"
         pass
 
-    def destory(self):
+    def destroy(self):
         # unloads stage
         # removes all data like sub objects
         # closes json and text files
@@ -87,19 +88,12 @@ class stage_one:
             (self.character.x <= 190), (self.character.x >= 1500), (self.character.y <= 100),
             (self.character.y >= 980)))
         # print(self.getPos())
-        self.triggers.detection(test=True, surface=self.STAGE)
+        self.triggers.detection(test=False, surface=self.STAGE)
 
         # self.npcOne.draw_npc()
 
         # self.text.draw_textbox()
         # self.text.text_animation()
-
-        exitstate = None
-        exitstate = self.exits.detection()
-
-        if exitstate != None:
-            self.nextState = True
-            self.state = exitstate
 
 
 
@@ -113,8 +107,8 @@ class stage_one:
         return self.character.x, self.character.y
 
 
-    @staticmethod
-    def quit_check():
+    
+    def quit_check(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 print(1)
@@ -128,6 +122,27 @@ class stage_one:
                     run = False
                     pygame.quit()
                     sys.exit()
+
+            for i in self.exits.onRectCollison:
+                if self.exits.character.colliderect(i[0]):
+                    self.state =  i[1]
+
+            for i in self.exits.onPassingLimit:
+                if self.exits.character.colliderect(i[0]):
+                    self.state =  i[1]
+
+
+            for i in self.exits.onRectColliosnAndUserInput:
+                #triggers.drawBoxes(i[0], WIN)
+                pygame.draw.rect(WIN, (0, 0, 0), i[0])
+                pygame.display.flip()
+
+                if self.exits.character.colliderect(i[0]):
+                    # TODO modify to get key down from datapack
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_RETURN:
+                            print("i have no clue lmao")
+                            self.state =  i[1]
 
     #figures out what conditon was met and returns the next state
     def nextstate(self):

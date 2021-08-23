@@ -7,7 +7,12 @@
     "stageone":{
         "json_file_location": "level data",
         "json_file": "level_one.json",
-        "stage exits": [["stagetwo","collisonKeydown",[100,100,100,100]], ["stagethree","onLimitExeding ie if ... > limit: do something"]]
+        "stage exits": [["stagetwo","collisonKeydown",[0,880,2000,200]], ["stagethree","onLimitExeding ie if ... > limit: do something"]]
+    },
+    "stagetwo":{
+        "json_file_location": "level data",
+        "json_file": "level_two.json",
+        "stage exits": [["stagetwo","collisonKeydown",[300,700,1000,300]], ["stagethree","onLimitExeding ie if ... > limit: do something"]]
     }
     
 }

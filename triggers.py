@@ -54,17 +54,17 @@ class state_triggers:
         for i in exits:
             
             if i[1] == "collison":
-                self.onRectCollison.append(pygame.Rect(i[2][0],i[2][1],i[2][2],i[2][3]),i[0])
+                self.onRectCollison.append([pygame.Rect(i[2][0],i[2][1],i[2][2],i[2][3]),i[0]])
 
             elif i[1] == "collisonKeydown":
-                self.onRectColliosnAndUserInput.append(pygame.Rect(i[2][0],i[2][1],i[2][2],i[2][3]), i[0])
+                self.onRectColliosnAndUserInput.append([pygame.Rect(i[2][0],i[2][1],i[2][2],i[2][3]), i[0]])
 
             elif i[1] == "limit":
-                self.onPassingLimit.append(pygame.Rect(i[2][0],i[2][1],i[2][2],i[2][3]),i[0])
+                self.onPassingLimit.append([pygame.Rect(i[2][0],i[2][1],i[2][2],i[2][3]),i[0]])
 
 
     def detection(self):
-        for i in self.onRectCollison:
+        '''for i in self.onRectCollison:
             if self.character.colliderect(i[0]):
                 return i[1]
 
@@ -73,11 +73,13 @@ class state_triggers:
                 return i[1]
 
         for i in self.onRectColliosnAndUserInput:
-            if self.character.colliderect(i[0]):
-                for event in pygame.event.get():
-                    # TODO modify to get key down from datapack
-                    if event.key == pygame.K_RETURN:
-                        return i[1]
+            # if self.character.colliderect(i[0]):
+            # TODO modify to get key down from datapack
+            # if keys_pressed == pygame.KEYDOWN:
+            if  == pygame.K_a:
+                print(1)
+                print("i have no clue")
+                return i[1]'''
                         
 
 
