@@ -43,7 +43,7 @@ statemanager = statemanagerclass()
 
 
 """ before while loop push basic states like menus and shit"""
-state = stage_one(data["stageone"]["json_file"], data["stageone"]["json_file_location"])
+state = stage_one(data["stageone"]["json_file"], data["stageone"]["json_file_location"], exit_data= data)
 statemanager.push(state)
 
 

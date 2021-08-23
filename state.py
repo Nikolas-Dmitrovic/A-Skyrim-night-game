@@ -18,11 +18,11 @@ import json
 from text_engine import text_box
 from NPC_handler import NPC
 from movement import movement, animated_movement
-from triggers import triggers
+from triggers import triggers, state_triggers
 
 
 class stage_one:
-    def __init__(self, jsonfile=None, jsonfileloc = None):
+    def __init__(self, jsonfile=None, jsonfileloc = None, exit_data = None):
 
         
         self.file = open(os.path.join(jsonfileloc, jsonfile))
@@ -54,9 +54,11 @@ class stage_one:
         self.play_movement = movement(data, self.character, self.background)
         self.text = text_box(self.STAGE, "sample text file")
         self.triggers = triggers(self.character, data, self.play_movement)
-        self.exits = triggers(self.character,data)
+        self.exits = state_triggers(exit_data,self.character)
 
         self.nextState = False
+        self.exit_data = exit_data
+        self.state = None
 
     def playerRect(self):
         return self.character
@@ -92,6 +94,14 @@ class stage_one:
         # self.text.draw_textbox()
         # self.text.text_animation()
 
+        exitstate = None
+        exitstate = self.exits.detection()
+
+        if exitstate != None:
+            self.nextState = True
+            self.state = exitstate
+
+
 
     def draw(self):
             WIN.fill(WHITE)
@@ -119,6 +129,7 @@ class stage_one:
                     pygame.quit()
                     sys.exit()
 
-    def nextstate(self, nextstate) -> str:
+    #figures out what conditon was met and returns the next state
+    def nextstate(self):
         if self.nextState == True:
-            return nextstate
+            return self.state
