@@ -1,13 +1,13 @@
 # def npc events- includes movement activation and text triggers
 import pygame
 import os
-from GLOBAL_VARIABLES import WIN, WHITE, VEL
+from GLOBAL_VARIABLES import WIN, WHITE
 import timeings_classes as time
 
 
 # temp test path add this to json file afterwords
 # path = ((1,1),(2,2))
-
+VEL = 5
 
 class NPC:
     def __init__(self, data, npcDataIndex, movement = False, poggers = False):

@@ -12,7 +12,7 @@ TODO add end of level function that detects player position and triggers the sta
 
 import sys
 import pygame
-from GLOBAL_VARIABLES import WIN, WHITE, VEL
+from GLOBAL_VARIABLES import WIN, WHITE
 import os
 import json
 from text_engine import text_box
@@ -22,7 +22,7 @@ from triggers import triggers, state_triggers
 
 
 class stage_one:
-    def __init__(self, jsonfile=None, jsonfileloc = None, exit_data = None):
+    def __init__(self, jsonfile=None, jsonfileloc = None, exit_data = None, clock = None):
 
         
         self.file = open(os.path.join(jsonfileloc, jsonfile))
@@ -36,8 +36,9 @@ class stage_one:
         self.MAIN_CHARACTER = pygame.transform.rotate(
             pygame.transform.scale(
                 pygame.image.load(
-                    os.path.join(data["main_character"]["file_location"], data["main_character"]["file_name"])).convert(),
+                    os.path.join(data["main_character"]["file_location"], data["main_character"]["file_name"])).convert_alpha(),
                 (192, 108)), 0)
+        # self.MAIN_CHARACTER.set_colorkey((0,0,0))
 
         """ figure out how to make.covert() work with the background image for preformace increase"""
         self.STAGE = pygame.transform.rotate(
@@ -48,11 +49,11 @@ class stage_one:
 
 
 
-        
+        self.clock = clock
 
         self.state = 'stage'
         # self.npcOne = NPC(data, "npc1", movement=False)
-        self.play_movement = movement(data, self.character, self.background)
+        self.play_movement = animated_movement(data, self.character, self.background, clock)
         self.text = text_box(self.STAGE, "sample text file")
         self.triggers = triggers(self.character, data, self.play_movement)
         self.exits = state_triggers(exit_data,self.character)
@@ -84,11 +85,11 @@ class stage_one:
 
         self.quit_check()
         keys_pressed = pygame.key.get_pressed()
-        self.play_movement.handle_movement(keys_pressed, (
+        '''self.play_movement.handle_movement(keys_pressed, (
             (self.character.x <= 190), (self.character.x >= 1500), (self.character.y <= 100),
-            (self.character.y >= 980)))
+            (self.character.y >= 980)))'''
         # print(self.getPos())
-        self.triggers.detection(test=False, surface=self.STAGE)
+        # self.triggers.detection(test=False, surface=self.STAGE)
 
         # self.npcOne.draw_npc()
 
@@ -98,9 +99,15 @@ class stage_one:
 
 
     def draw(self):
+            self.quit_check()
             WIN.fill(WHITE)
             WIN.blit(self.STAGE, (self.background.x, self.background.y))
-            WIN.blit(self.MAIN_CHARACTER, (self.character.x, self.character.y))
+            keys_pressed = pygame.key.get_pressed()
+            self.play_movement.handle_movement(keys_pressed, (
+                (self.character.x <= 190), (self.character.x >= 1500), (self.character.y <= 100),
+                (self.character.y >= 980)))
+            self.triggers.detection(test=False, surface=self.STAGE)
+            # pygame.draw.rect(WIN, (0, 0, 0), self.character)
             pygame.display.update()
 
     def getPos(self) -> tuple:
@@ -108,7 +115,7 @@ class stage_one:
 
 
     
-    def quit_check(self):
+    def quit_check(self) -> None:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 print(1)
@@ -134,8 +141,6 @@ class stage_one:
 
             for i in self.exits.onRectColliosnAndUserInput:
                 #triggers.drawBoxes(i[0], WIN)
-                pygame.draw.rect(WIN, (0, 0, 0), i[0])
-                pygame.display.flip()
 
                 if self.exits.character.colliderect(i[0]):
                     # TODO modify to get key down from datapack

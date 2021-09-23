@@ -4,6 +4,7 @@
 
 # TODO imports all the scripts and code library's
 import pygame
+from pygame.time import Clock
 from main_menu import Gamestate_main_menu
 from state import stage_one
 from statemanager.statemanagerexample import statemanager as statemanagerclass
@@ -19,7 +20,7 @@ pygame.init()
 file = open(os.path.join('statemanager', 'statemanager.json'))
 data = json.load(file)
 
-
+clock =  pygame.time.Clock()
 
 
 # time_start = time.time()
@@ -33,7 +34,7 @@ statemanager = statemanagerclass()
 
 
 """ before while loop push basic states like menus and shit"""
-state = stage_one(data["stageone"]["json_file"], data["stageone"]["json_file_location"], exit_data= data)
+state = stage_one(data["stageone"]["json_file"], data["stageone"]["json_file_location"], exit_data= data, clock= clock)
 statemanager.push(state)
 
 # TODO add defult menu states at common indexs ex) [0] to [5]            
@@ -45,27 +46,35 @@ TODO create pop calls before entering new reigion to reduce memory usage
 
 """
 
+"""
+
+TODO clip character images better lmao 
+
+
+"""
+
+
 def main(counter = 0, exitstate = None):
     run = True
-    clock = pygame.time.Clock()
     while run:
 
         state = statemanager.stack[statemanager.top]
         exitstate = state.state
         if exitstate != None:
-            newstate = stage_one(data[exitstate]["json_file"], data[exitstate]["json_file_location"], exit_data= data)
+            newstate = stage_one(data[exitstate]["json_file"], data[exitstate]["json_file_location"], exit_data= data, clock = clock)
             statemanager.push(newstate)
             exitstate = None
 
-        statemanager.update()
+        # statemanager.update()
         statemanager.draw()
+        # pygame.display.update()
         # counter += 1
         # print(clock.get_fps())
-        # print(counter)
+        # print(dounter)
         #if counter >= 600:
         #    statemanager.pop()
 
-        clock.tick(60)
+        clock.tick(144)
 
 
 

@@ -29,3 +29,6 @@ class npcAnimation:
 
 class wholeSceneAnimation(animation):
     pass
+
+class particels:
+    pass
